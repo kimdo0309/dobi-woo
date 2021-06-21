@@ -12,11 +12,12 @@ struct menu
 int main()
 {
 	int num = 0;
-	struct menu* meso[50] = { 0, };
-	struct menu* coin[50] = { 0, };
+	struct menu meso[50] = { 0, };
+	struct menu coin[50] = { 0, };
 
-	strcpy(meso[0]->name, "이벤트 링 큐브");
-	meso[0]->cost = 100;
+
+	strcpy(meso[0].name, "이벤트 링 큐브");
+	meso[0].cost = 100;
 	meso[0]->count = 50;
 
 	strcpy(meso[1]->name, "에픽 잠재능력 부여 주문서");
