@@ -13,6 +13,9 @@ struct menu
 int main()
 {
 	int num = 0;
+	int num2 = 0;
+	int num3 = 0;
+
 	int yourmeso = 1000;
 	int yourcoin = 1000;
 
@@ -34,26 +37,60 @@ int main()
 	printf("코인샵은 1, 메소샵은 2를 입력하세요\n");
 	scanf("%d", &num);
 
-	switch (num)
+	while(1)
 	{
-	case 1:
-		for (int i = 0; i < 3; i++)
+		printf("가지고 있는 코인 : %d\n", yourcoin);
+		printf("가지고 있는 메소 : %d\n", yourmeso);
+		switch (num)
 		{
-			printf("이름 : %s\n", meso[i].name);
-			printf("가격 : %d\n", meso[i].cost);
-			printf("개수 : %d\n", meso[i].count);
+		case 1:
+			for (int i = 0; i < 3; i++)
+			{
+				printf("%d.", i + 1);
+				printf("이름 : %s\n", meso[i].name);
+				printf("가격 : %d\n", meso[i].cost);
+				printf("개수 : %d\n", meso[i].count);
+				printf("\n");
+			}
+			printf("구매하실 아이템의 번호를 입력하세요\n");
+			scanf("%d", &num3);
+			if (num3 > 4)
+			{
+				printf("잘못된 입력입니다.\n");
+			}
+			else
+			{
+				yourcoin = yourcoin - meso[num3 - 1].cost;
+				if (yourcoin < 0)
+				{
+					printf("코인의 개수가 부족합니다!!\n");
+					yourcoin = yourcoin + meso[num3 - 1].cost;
+					meso[num3 - 1].count++;
+				}
+				meso[num3 - 1].count--;
+			}
+			break;
+		case 2:
+			printf("콜드 크리에이터부터 사용하실수있습니다.(미구현ㅋ)\n");
+			break;
+		default:
+			printf("잘못된 입력입니다.\n");
+			break;
+		}
+
+		printf("쇼핑을 계속 하시겠습니까?\n");
+		printf("yes = 1, no = 다른 숫자 입력\n");
+		scanf("%d", &num2);
+		if (num2 == 1)
+		{
+			printf("쇼핑을 계속 합니다.\n");
 			printf("\n");
 		}
-		break;
-	case 2:
-		printf("콜드 크리에이터부터 사용하실수있습니다.(미구현ㅋ)\n");
-		break;
-	default:
-		printf("잘못된 입력입니다.\n");
-		return 0;
+		else
+		{
+			return 0;
+		}
 	}
-
-
-
+	
 	return 0;
 }
