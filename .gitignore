@@ -7,3 +7,4 @@
 *.opendb
 *.sln
 *.filters
+*.ipch
