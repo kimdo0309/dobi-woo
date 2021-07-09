@@ -5,7 +5,7 @@
 
 using namespace cv;
 using namespace std;
-
+//dd
 void draw_line(Mat &img_line, vector<Vec4i> lines, int width, int height)
 {
     if (lines.size() == 0) return;
