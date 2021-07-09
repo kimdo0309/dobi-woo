@@ -1,6 +1,4 @@
 CC = g++
-SRCS = test.cpp
-PROG = test
 
 OPENCV = `pkg-config opencv4 --cflags --libs`
 LIBS = $(OPENCV)
@@ -9,8 +7,7 @@ LIBS = $(OPENCV)
     
 camera:cameratest.cpp
 	$(CC) -o camera cameratest.cpp $(LIBS) -lgsl -lcblas
-
-all: $(PROG)
+	./camera
 
 clean:
-	rm -f $(OBJS) $(PROG)
+	rm -f camera
