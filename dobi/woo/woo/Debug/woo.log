@@ -1,3 +1,0 @@
-﻿  woo.c
-C:\Users\USER\Documents\GitHub\dobi-woo\dobi\woo\woo\woo.c(23,14): warning C4101: 'coin' :참조되지 않은 지역 변수입니다.
-  woo.vcxproj -> C:\Users\USER\Documents\GitHub\dobi-woo\dobi\woo\Debug\woo.exe
