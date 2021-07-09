@@ -9,6 +9,7 @@ LIBS = $(OPENCV)
     
 camera:cameratest.cpp
 	$(CC) -o camera cameratest.cpp $(LIBS) -lgsl -lcblas
+	./camera
 
 all: $(PROG)
 
