@@ -2,6 +2,7 @@
 #include <iostream>
 #include "drawline.h"
 #include "color.h"
+#include "point.h"
 
 using namespace cv;
 using namespace std;
@@ -31,20 +32,8 @@ int main()
       resize(frame, frame2, Size(width, height));
       
       can = color(frame2, width, height);
-
-      black_img = Mat::zeros(height, width, CV_8UC1);
-
-      Point points[4];
-      points[0] = Point(width * (1 - 0.85) / 2, height);
-      points[1] = Point((width * (1 - 0.07)) / 2, height - height *0.4);
-      points[2] = Point(width - (width * (1 - 0.07)) / 2, height - height * 0.4);
-      points[3] = Point(width - (width * (1 - 0.85)) / 2, height);
-
-      const Point*ppt[1] = { points };
-      int npt[] = { 4 };
       
-      fillPoly(black_img, ppt, npt, 1, Scalar(255, 255, 255), LINE_8);
-      bitwise_and(can, black_img, Result);
+      Result = Point_img(can, width, height);
       
       frame2.copyTo(lines);
       vector<Vec4i> linesP;
