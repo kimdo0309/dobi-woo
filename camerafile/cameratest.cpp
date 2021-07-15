@@ -50,7 +50,7 @@ int main()
       
       resize(frame, frame2, Size(width, height));
       
-      can=color(frame,width,height);
+      can=color(frame2,width,height);
 
       black_img = Mat::zeros(height, width, CV_8UC1);
 
