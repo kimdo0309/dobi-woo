@@ -1,6 +1,5 @@
 #include <opencv2/opencv.hpp>
 #include <iostream>
-#include <gsl/gsl_fit.h>
 #include "drawline.h"
 #include "color.h"
 

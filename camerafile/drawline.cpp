@@ -1,5 +1,6 @@
 #include <opencv2/opencv.hpp>
 #include <iostream>
+#include <gsl/gsl_fit.h>
 
 using namespace cv;
 using namespace std;
@@ -11,8 +12,7 @@ void draw_line(Mat &img_line, vector<Vec4i> lines, int width, int height)
     bool draw_right = true;
     bool draw_left = true;
     bool draw_center = true;
-   //int width = Width;
-   //int height = Height;
+
     //Find slopes of all lines
     //But only care about lines where abs(slope) > slope_threshold  
     float slope_threshold = 0.5;
