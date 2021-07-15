@@ -7,12 +7,11 @@
 using namespace cv;
 using namespace std;
 
-Mat color(Mat frame,int width,int height){
+Mat color(Mat frame2,int width,int height){
     Mat Add, img;
     Mat white_inRange, white_mask, yellow_inRange, yellow_mask;
-    Mat frame2 , can, hsv, gray, gauss;
+    Mat can, hsv, gray, gauss;
     
-    resize(frame, frame2, Size(width, height));
     inRange(frame2, Scalar(200, 255, 255), Scalar(255, 255, 255), white_mask);
     bitwise_and(frame2, frame2, white_inRange, white_mask);
       
@@ -49,9 +48,9 @@ int main()
    
       cap >> frame;
       
-      can=color(frame,width,height);
-      
       resize(frame, frame2, Size(width, height));
+      
+      can=color(frame,width,height);
 
       black_img = Mat::zeros(height, width, CV_8UC1);
 
