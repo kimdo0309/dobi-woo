@@ -28,7 +28,7 @@ Mat color(Mat frame2,int width,int height){
 }
 int main()
 {
-   VideoCapture cap("1.mp4");
+   VideoCapture cap("challenge.mp4");
 
    if(!cap.isOpened())
       cout << "첫번째 카메라를 열 수 없습니다." << endl;
