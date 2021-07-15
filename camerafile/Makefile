@@ -6,7 +6,7 @@ LIBS = $(OPENCV)
 .PHONY: all clean
     
 camera:cameratest.cpp drawline.o
-	$(CC) -o camera cameratest.cpp drawline.cpp $(LIBS) -lgsl -lcblas
+	$(CC) -o camera cameratest.cpp drawline.o $(LIBS) -lgsl -lcblas
 	./camera
 
 drawline.o:drawline.cpp drawline.h
