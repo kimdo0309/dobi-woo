@@ -7,6 +7,11 @@ LIBS = $(OPENCV)
     
 camera : cameratest.cpp drawline.o color.o point.o
 	$(CC) -o camera cameratest.cpp drawline.o color.o point.o $(LIBS) -lgsl -lcblas
+	sudo git add .
+	sudo git commit -m "git add"
+	sudo git push
+	wooyong-kim
+	dndyd9169!
 	./camera
 
 drawline.o : drawline.cpp drawline.h
