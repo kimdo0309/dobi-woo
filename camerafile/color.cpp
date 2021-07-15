@@ -1,7 +1,5 @@
- #include <opencv2/opencv.hpp>
+#include <opencv2/opencv.hpp>
 #include <iostream>
-#include <stdio.h>
-#include <gsl/gsl_fit.h>
 
 using namespace cv;
 using namespace std;
