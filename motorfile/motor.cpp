@@ -43,11 +43,12 @@ int main(void)
 	{
 		digitalWrite(MOTOR1A, 1);
 		digitalWrite(MOTOR2A, 0);
-		softPwmWrite(ENA, 100);
+		softPwmWrite(ENA, 200);
 		digitalWrite(MOTOR1B, 1);
 		digitalWrite(MOTOR2B, 0);
 		softPwmWrite(ENB, 100);
-		delay(1000);
+		//delay(1000);
+		/*
 		digitalWrite(MOTOR1A, 0);
 		digitalWrite(MOTOR2A, 1);
 		softPwmWrite(ENA, 50);
@@ -55,6 +56,7 @@ int main(void)
 		digitalWrite(MOTOR2B, 1);
 		softPwmWrite(ENB, 200);
 		delay(1000);
+		*/
 	}
 	
 	
