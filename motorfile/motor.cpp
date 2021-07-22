@@ -29,7 +29,7 @@ void INThandler(int sig)
 int main(void)
 {
 	if(wiringPiSetup() == -1) return 1;
-	signal(SIGINT, INThandler);	// ctrl + z
+	signal(SIGINT, INThandler);	// ctrl + z 종료
 	
 	pinMode(MOTOR1A, OUTPUT);
 	pinMode(MOTOR2A, OUTPUT);
@@ -43,14 +43,14 @@ int main(void)
 	{
 		digitalWrite(MOTOR1A, 1);
 		digitalWrite(MOTOR2A, 0);
-		softPwmWrite(ENA, 180);
+		softPwmWrite(ENA, 100);
 		digitalWrite(MOTOR1B, 1);
 		digitalWrite(MOTOR2B, 0);
-		softPwmWrite(ENB, 180);
+		softPwmWrite(ENB, 100);
 		delay(1000);
 		digitalWrite(MOTOR1A, 0);
 		digitalWrite(MOTOR2A, 1);
-		softPwmWrite(ENA, 100);
+		softPwmWrite(ENA, 50);
 		digitalWrite(MOTOR1B, 0);
 		digitalWrite(MOTOR2B, 1);
 		softPwmWrite(ENB, 200);
