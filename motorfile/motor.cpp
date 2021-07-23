@@ -10,7 +10,15 @@
 
 #define MOTOR1B 22	//31
 #define MOTOR2B 21	//29
-#define ENB 30 // 27
+#define ENB 3 // 15
+
+#define MOTOR1C 28	// 38
+#define MOTOR2C 27	// 36
+#define ENC 29 // 40
+
+#define MOTOR1D 26	// 32
+#define MOTOR2D 6	// 22
+#define END 5 // 18
 
 void init()
 {
@@ -18,6 +26,11 @@ void init()
 	digitalWrite(MOTOR2A, LOW);
 	digitalWrite(MOTOR1B, LOW);
 	digitalWrite(MOTOR2B, LOW);
+	digitalWrite(MOTOR1C, LOW);
+	digitalWrite(MOTOR2C, LOW);
+	digitalWrite(MOTOR1D, LOW);
+	digitalWrite(MOTOR2D, LOW);
+	
 }
 
 void INThandler(int sig)
@@ -35,20 +48,33 @@ int main(void)
 	pinMode(MOTOR2A, OUTPUT);
 	pinMode(MOTOR1B, OUTPUT);
 	pinMode(MOTOR2B, OUTPUT);
+	pinMode(MOTOR1C, OUTPUT);
+	pinMode(MOTOR2C, OUTPUT);
+	pinMode(MOTOR1D, OUTPUT);
+	pinMode(MOTOR2D, OUTPUT);
 	
 	softPwmCreate(ENA, 0, 200);
 	softPwmCreate(ENB, 0, 200);
+	softPwmCreate(ENC, 0, 200);
+	softPwmCreate(END, 0, 200);
+	
 	
 	while(1)
 	{
-		digitalWrite(MOTOR1A, 1);
-		digitalWrite(MOTOR2A, 0);
-		softPwmWrite(ENA, 200);
-		digitalWrite(MOTOR1B, 1);
-		digitalWrite(MOTOR2B, 0);
-		softPwmWrite(ENB, 100);
-		delay(1000);
-		
+		/*digitalWrite(MOTOR1A, 0);
+		digitalWrite(MOTOR2A, 1);
+		softPwmWrite(ENA, 100);
+		digitalWrite(MOTOR1B, 0);
+		digitalWrite(MOTOR2B, 1);
+		softPwmWrite(ENB, 100);*/
+
+		digitalWrite(MOTOR1C, 1);
+		digitalWrite(MOTOR2C, 0);
+		softPwmWrite(ENC, 100);
+		digitalWrite(MOTOR1D, 1);
+		digitalWrite(MOTOR2D, 0);
+		softPwmWrite(END, 100);
+		/*
 		digitalWrite(MOTOR1A, 0);
 		digitalWrite(MOTOR2A, 1);
 		softPwmWrite(ENA, 50);
@@ -56,9 +82,9 @@ int main(void)
 		digitalWrite(MOTOR2B, 1);
 		softPwmWrite(ENB, 200);
 		delay(1000);
+		*/
 		
 	}
-	
 	
 	return 0;
 }
