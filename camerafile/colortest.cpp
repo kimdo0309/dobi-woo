@@ -12,7 +12,7 @@ Mat Result, frame2;
 
 int H_lowTh, S_lowTh, V_lowTh, H_highTh, S_highTh, V_highTh;
 
-static void black_Scalar(int, int, int, int, int, int, void*)
+static void black_Scalar(int, void*)
 {
 	inRange(hsv, Scalar(H_lowTh, S_lowTh, V_lowTh), Scalar(H_highTh, S_highTh, V_highTh), black_mask);
 }
@@ -29,19 +29,21 @@ int main()
    
    cap >> frame;
    resize(frame, frame2, Size(width, height));
-   
    namedWindow("cam",1);
-   createTrackbar("H_Low","cam", &H_lowTh, 179);
-   createTrackbar("S_Low","cam", &S_lowTh, 255);
-   createTrackbar("V_Low","cam", &V_lowTh, 255);
-   createTrackbar("H_High","cam", &H_highTh, 179);
-   createTrackbar("S_High","cam", &S_highTh, 255);
-   createTrackbar("V_High","cam", &V_highTh, 255);
+   
+   createTrackbar("H_Low","cam", &H_lowTh, 179, black_Scalar);
+   createTrackbar("S_Low","cam", &S_lowTh, 255, black_Scalar);
+   createTrackbar("V_Low","cam", &V_lowTh, 255, black_Scalar);
+   createTrackbar("H_High","cam", &H_highTh, 179, black_Scalar);
+   createTrackbar("S_High","cam", &S_highTh, 255, black_Scalar);
+   createTrackbar("V_High","cam", &V_highTh, 255, black_Scalar);
   
    while(1)
    {
 	   cvtColor(frame2, hsv, COLOR_BGR2HSV);
-	   black_Scalar(H_lowTh, S_lowTh, V_lowTh, H_highTh, S_highTh, V_highTh, 0);
+	   black_inRange = Mat::zeros(0, 0, CV_8UC3);
+	   //black_Scalar(H_lowTh, S_lowTh, V_lowTh, H_highTh, S_highTh, V_highTh, 0);
+	   black_Scalar(0 ,0);
 	   
 	   bitwise_and(frame2, frame2, black_inRange, black_mask);
 	   cvtColor(black_inRange, gray, COLOR_BGR2GRAY);
