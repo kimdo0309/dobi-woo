@@ -9,7 +9,11 @@ using namespace std;
 
 int main()
 {
+<<<<<<< HEAD
    VideoCapture cap(-1);
+=======
+   VideoCapture cap("unknown.png");
+>>>>>>> 85d6431ecb21c48e897734ff6e14a5a218148e7b
 
    if(!cap.isOpened())
       cout << "첫번째 카메라를 열 수 없습니다." << endl;
@@ -22,7 +26,7 @@ int main()
    printf("%d\n", width);
    printf("%d\ns", height);
    
-   while(1)
+   /*while(1)
    {
       Mat frame, black_img, can, lines;
       Mat Result, frame2;
@@ -45,6 +49,19 @@ int main()
 
       if(waitKey(1) == 27) break;   //esc입력시 종료
    }
+   */
+   Mat frame, black_img, can, lines;
+   Mat Result, frame2;
+   
+   cap >> frame;
+   resize(frame, frame2, Size(width, height));
+   
+   can = color(frame2, width, height);
+   
+   imshow("cam1", frame);
+   imshow("cam2", can);
+   
+   waitKey(0);
    
    destroyAllWindows();
 
