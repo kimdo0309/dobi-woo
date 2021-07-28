@@ -4,39 +4,31 @@
 using namespace cv;
 using namespace std;
 
-
 Mat color(Mat frame2, int width, int height)
 {
     Mat Add, img;
-    Mat white_inRange, white_mask, yellow_inRange, yellow_mask,BGR;
+    Mat white_inRange, white_mask, yellow_inRange, yellow_mask,hsv_1,black_inRange;
     Mat can, hsv, gray, gauss;
     
+
     //inRange(frame2, Scalar(200, 255, 255), Scalar(255, 255, 255), white_mask);
     //bitwise_and(frame2, frame2, white_inRange, white_mask);
     
-    cvtColor(frame2, BGR, COLOR_BGR2HSV);
-    inRange(BGR, Scalar(0, 0, 0), Scalar(100,50, 100), white_mask);
+    cvtColor(frame2, hsv_1, COLOR_BGR2HSV);
+    inRange(hsv_1, Scalar(100, 200, 0), Scalar(180,255, 255), white_mask);
+    bitwise_and(frame2, frame2, white_inRange, white_mask);
     
     cvtColor(frame2, hsv, COLOR_BGR2HSV);
-    //inRange(hsv, Scalar(18, 94, 140), Scalar(48, 255, 255), yellow_mask);
-    inRange(hsv, Scalar(0, 0, 0), Scalar(100, 150, 150), yellow_mask);
+    inRange(hsv, Scalar(18, 94, 140), Scalar(48, 255, 255), yellow_mask);
     bitwise_and(frame2, frame2, yellow_inRange, yellow_mask);
       
     addWeighted(white_inRange, 1.0, yellow_inRange, 1.0, 0.0, Add);
-    cvtColor(white_inRange, gray, COLOR_BGR2GRAY);
-    
-    /*cvtColor(frame2, hsv, COLOR_BGR2HSV);
-    inRange(hsv, Scalar(0, 0, 0), Scalar(100, 50, 100), black_mask);
-    bitwise_and(frame2, frame2, black_inRange, black_mask);
-    inblack_inRange = ~black_inRange;
-    cvtColor(black_inRange, gray, COLOR_BGR2GRAY);*/
-    
-    //addWeighted(white_inRange, 1.0, yellow_inRange, 1.0, 0.0, Add);
-    //cvtColor(Add, gray, COLOR_BGR2GRAY);
+    cvtColor(Add, gray, COLOR_BGR2GRAY);
+
     GaussianBlur(gray, gauss, Size(3, 3), 0, 0);
     Canny(gauss, can, 100, 125);
     
-    imshow("cam3", can);
+    //imshow("cam", can);
     
     return can;
 }
