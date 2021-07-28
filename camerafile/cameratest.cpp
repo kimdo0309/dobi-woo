@@ -13,6 +13,7 @@ Mat black_mask,black_inRange;
 static Mat black_Scalar(Mat colorselect,int, int, int, int, int, int, void*)
 {
     Mat hsv,gray,gauss,can;
+    black_inRange = Mat::zeros(0, 0, CV_8UC3);
     cvtColor(colorselect, hsv, COLOR_BGR2HSV);
 	inRange(hsv, Scalar(H_lowTh, S_lowTh, V_lowTh), Scalar(H_highTh, S_highTh, V_highTh), black_mask);
     bitwise_and(colorselect, colorselect, black_inRange, black_mask);
