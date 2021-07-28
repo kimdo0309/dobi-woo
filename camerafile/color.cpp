@@ -36,10 +36,9 @@ Mat color(Mat frame2, int width, int height)
     /*
     inRange(frame2, Scalar(200, 255, 255), Scalar(255, 255, 255), white_mask);
     bitwise_and(frame2, frame2, white_inRange, white_mask);
-      
+    
     cvtColor(frame2, hsv, COLOR_BGR2HSV);
     inRange(hsv, Scalar(18, 94, 140), Scalar(48, 255, 255), yellow_mask);
-    inRange(hsv, Scalar(0, 0, 0), Scalar(100, 150, 150), yellow_mask);
     bitwise_and(frame2, frame2, yellow_inRange, yellow_mask);
     */
     cvtColor(frame2, hsv, COLOR_BGR2HSV);
@@ -52,6 +51,6 @@ Mat color(Mat frame2, int width, int height)
     Canny(gauss, can, 100, 125);
     
     imshow("cam", color_inRange);
-    
+
     return can;
 }
