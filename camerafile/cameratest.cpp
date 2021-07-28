@@ -9,20 +9,19 @@ using namespace std;
 
 int main()
 {
-   VideoCapture cap("unknown.png");
+   VideoCapture cap(-1);
 
    if(!cap.isOpened())
       cout << "첫번째 카메라를 열 수 없습니다." << endl;
    
    //double fps = cap.get(CAP_PROP_FPS);
-   //int Width = cap.get(CAP_PROP_FRAME_WIDTH)/2;
-   //int Height = cap.get(CAP_PROP_FRAME_HEIGHT)/2;
    int width = cap.get(CAP_PROP_FRAME_WIDTH);
    int height = cap.get(CAP_PROP_FRAME_HEIGHT);
-   printf("%d\n", width);
-   printf("%d\ns", height);
    
-   /*while(1)
+   namedWindow("cam", 1);
+   Color_createTrackbar();
+
+   while(1)
    {
       Mat frame, black_img, can, lines;
       Mat Result, frame2;
@@ -45,17 +44,6 @@ int main()
 
       if(waitKey(1) == 27) break;   //esc입력시 종료
    }
-   */
-   Mat frame, black_img, can, lines;
-   Mat Result, frame2;
-   
-   cap >> frame;
-   resize(frame, frame2, Size(width, height));
-   
-   can = color(frame2, width, height);
-   
-   imshow("cam1", frame);
-   imshow("cam2", can);
    
    waitKey(0);
    
