@@ -7,6 +7,6 @@ using namespace std;
 #ifndef DRAWLINE
 #define DRAWLINE
 
-void draw_line(Mat &img_line, vector<Vec4i> lines, int width, int height);
+float draw_line(Mat &img_line, vector<Vec4i> lines, int width, int height);
 
 #endif

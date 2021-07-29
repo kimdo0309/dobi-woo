@@ -5,8 +5,8 @@ LIBS = $(OPENCV)
 
 .PHONY: all clean
     
-camera : cameratest.cpp drawline.o color.o point.o
-	$(CC) -o camera cameratest.cpp drawline.o color.o point.o $(LIBS) -lgsl -lcblas
+camera : cameratest.cpp drawline.o color.o point.o motor.o
+	$(CC) -o camera cameratest.cpp drawline.o color.o point.o motor.o $(LIBS) -lgsl -lcblas -lwiringPi
 	./camera
 
 drawline.o : drawline.cpp drawline.h
@@ -17,6 +17,9 @@ color.o : color.cpp color.h
 	
 point.o : point.cpp point.h
 	$(CC) -c -o point.o point.cpp $(LIBS)
+	
+motor.o : motor.cpp motor.h
+	$(CC) -c -o motor.o motor.cpp -lwiringPi
 
 clean:
 	rm -f camera

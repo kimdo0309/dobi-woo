@@ -5,9 +5,9 @@
 using namespace cv;
 using namespace std;
 
-void draw_line(Mat &img_line, vector<Vec4i> lines, int width, int height)
+float draw_line(Mat &img_line, vector<Vec4i> lines, int width, int height)
 {
-    if (lines.size() == 0) return;
+    if (lines.size() == 0) return 1;
 
     bool draw_right = true;
     bool draw_left = true;
@@ -155,7 +155,8 @@ void draw_line(Mat &img_line, vector<Vec4i> lines, int width, int height)
     //Find 2 end points for right and left lines, used for drawing the line
     //y = m*x + b--> x = (y - b) / m
     int y1 = height;
-    int y2 = height * (1 - 0.4);
+    //int y2 = height * (1 - 0.4);
+    int y2 = height * (1 - 0.7);
 
     float right_x1 = (y1 - right_b) / right_m;
     float right_x2 = (y2 - right_b) / right_m;
@@ -181,5 +182,8 @@ void draw_line(Mat &img_line, vector<Vec4i> lines, int width, int height)
     if (draw_center)
     line(img_line, Point((right_x1 + left_x1) / 2, y1), 
     Point((right_x2 + left_x2) / 2, y2), Scalar(255, 0, 0), 10);
-
-}
+    
+    float slope = ((right_x1+left_x1)/2 - (right_x2+left_x2)/2) / (y1 - y2);
+    
+    return slope;
+ }
