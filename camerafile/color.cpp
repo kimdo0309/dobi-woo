@@ -16,7 +16,7 @@ static void Color_Scalar(Mat frame2, int, int, int, int, int, int, void*)
 	inRange(hsv, Scalar(H_lowTh, S_lowTh, V_lowTh), Scalar(H_highTh, S_highTh, V_highTh), color_mask);
 	bitwise_and(frame2, frame2, color_inRange, color_mask);
 	
-	Mat element = getStructuringElement(MORPH_RECT, Size(3, 3), Point(-1, -1));
+	Mat element = getStructuringElement(MORPH_RECT, Size(10, 10), Point(-1, -1));
     erode(color_inRange, color_inRange, element);
     dilate(color_inRange, color_inRange, element);
 }

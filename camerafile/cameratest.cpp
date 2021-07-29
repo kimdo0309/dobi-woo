@@ -33,8 +33,8 @@ int main()
       
       can = color(frame2, width, height);
       
-      frame2.copyTo(colorselect);
-      black_mask=black_Scalar(colorselect,H_lowTh, S_lowTh, V_lowTh, H_highTh, S_highTh, V_highTh, 0);
+      //frame2.copyTo(colorselect);
+      //black_mask=black_Scalar(colorselect,H_lowTh, S_lowTh, V_lowTh, H_highTh, S_highTh, V_highTh, 0);
       
       Result = Point_img(can, width, height);
       
@@ -45,7 +45,7 @@ int main()
       
       imshow("cam1", lines);
       imshow("cam2", can);
-      imshow("cam", black_mask);
+      //imshow("cam", black_mask);
 
       if(waitKey(1) == 27) break;   //esc입력시 종료
    }
