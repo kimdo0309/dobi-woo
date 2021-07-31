@@ -93,7 +93,7 @@ void motor_back(int speed)
 void motor_right(int speed)
 {
 	digitalWrite(MOTOR1A, 0);
-	digitalWrite(MOTOR2A, 1);
+	digitalWrite(MOTOR2A, 0);
 	softPwmWrite(ENA, speed);
 	digitalWrite(MOTOR1B, 1);
 	digitalWrite(MOTOR2B, 0);
@@ -102,7 +102,7 @@ void motor_right(int speed)
 	digitalWrite(MOTOR2C, 0);
 	softPwmWrite(ENC, speed);
 	digitalWrite(MOTOR1D, 0);
-	digitalWrite(MOTOR2D, 1);
+	digitalWrite(MOTOR2D, 0);
 	softPwmWrite(END, speed);
 }
 
@@ -112,10 +112,10 @@ void motor_left(int speed)
 	digitalWrite(MOTOR2A, 0);
 	softPwmWrite(ENA, speed);
 	digitalWrite(MOTOR1B, 0);
-	digitalWrite(MOTOR2B, 1);
+	digitalWrite(MOTOR2B, 0);
 	softPwmWrite(ENB, speed);
 	digitalWrite(MOTOR1C, 0);
-	digitalWrite(MOTOR2C, 1);
+	digitalWrite(MOTOR2C, 0);
 	softPwmWrite(ENC, speed);
 	digitalWrite(MOTOR1D, 1);
 	digitalWrite(MOTOR2D, 0);

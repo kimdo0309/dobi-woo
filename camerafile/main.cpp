@@ -8,6 +8,8 @@
 using namespace cv;
 using namespace std;
 
+int speed = 90;
+
 int main()
 {
 	VideoCapture cap(-1);
@@ -16,7 +18,8 @@ int main()
 	if(!cap.isOpened())
 	cout << "첫번째 카메라를 열 수 없습니다." << endl;
 	if(wiringPiSetup() == -1) return 1;
-	signal(SIGINT, INThandler);	// ctrl + z 종료
+	
+	//signal(SIGINT, INThandler);	// ctrl + z 종료
 	
 	//double fps = cap.get(CAP_PROP_FPS);
 	int width = cap.get(CAP_PROP_FRAME_WIDTH);
@@ -42,22 +45,34 @@ int main()
 		
 		frame2.copyTo(lines);
 		vector<Vec4i> linesP;
-		HoughLinesP(Result, linesP, 2, CV_PI/180, 15, 100, 100);
+		HoughLinesP(Result, linesP, 2, CV_PI/180, 15, 50, 100);
 		float slope = draw_line(lines, linesP, width, height);
-		//printf("%f\n", slope);
-		//delay(100);
-		if(slope < 1 && slope > -1)
+		printf("%f\n", slope);
+		delay(100);
+		/*if(slope < 2 && slope > -2)
 		{
-			motor_straight(200);
+			motor_straight(speed);
+		}
+		else if(slope < -2)
+		{
+			motor_left(speed);
+		}
+		else if(slope > 2)
+		{
+			motor_right(speed);
 		}
 		else
 		{
 			motor_init();
 		}
-		
+		*/
 		imshow("cam1", lines);
-		imshow("cam2", can);
-		if(waitKey(1) == 27) break;   //esc입력시 종료
+		imshow("cam2", Result);
+		if(waitKey(1) == 27) //esc입력시 종료
+		{
+			motor_init();
+			break;   
+		}
 	}
 	destroyAllWindows();
 	return 0;
