@@ -16,8 +16,7 @@ int main(void)
 	
 	while(1)
 	{
-		motor_straight(200);
-		delay(1000);
+		motor_right(150);
 	}
 	
 	return 0;

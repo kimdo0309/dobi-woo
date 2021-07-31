@@ -42,15 +42,22 @@ Mat color(Mat frame2, int width, int height)
     bitwise_and(frame2, frame2, yellow_inRange, yellow_mask);
     */
     cvtColor(frame2, hsv, COLOR_BGR2HSV);
-    Color_Scalar(frame2, H_lowTh, S_lowTh, V_lowTh, H_highTh, S_highTh, V_highTh, 0);
-    
-    cvtColor(color_inRange, gray, COLOR_BGR2GRAY);
+    black_inRange = Mat::zeros(0, 0, CV_8UC3);
+    //Color_Scalar(frame2, H_lowTh, S_lowTh, V_lowTh, H_highTh, S_highTh, V_highTh, 0);
+    inRange(hsv, Scalar(0, 0, 0), Scalar(180, 255, 255), black_mask);
+	bitwise_and(frame2, frame2, black_inRange, black_mask);
+	/*
+	Mat element = getStructuringElement(MORPH_RECT, Size(5, 5), Point(-1, -1));
+    erode(black_inRange, black_inRange, element);
+    dilate(black_inRange, black_inRange, element);
+    */
+    cvtColor(black_inRange, gray, COLOR_BGR2GRAY);
     //addWeighted(white_inRange, 1.0, yellow_inRange, 1.0, 0.0, Add);
     //cvtColor(Add, gray, COLOR_BGR2GRAY);
     GaussianBlur(gray, gauss, Size(3, 3), 0, 0);
     Canny(gauss, can, 100, 125);
     
-    imshow("cam", color_inRange);
+    //imshow("cam", color_inRange);
 
     return can;
 }
