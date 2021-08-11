@@ -164,7 +164,6 @@ float draw_line(Mat &img_line, vector<Vec4i> lines, int width, int height)
     float left_x1 = (y1 - left_b) / left_m;
     float left_x2 = (y2 - left_b) / left_m;
 
-
     //Convert calculated end points from float to int
     y1 = int(y1);
     y2 = int(y2);
@@ -172,8 +171,10 @@ float draw_line(Mat &img_line, vector<Vec4i> lines, int width, int height)
     right_x2 = int(right_x2);
     left_x1 = int(left_x1);
     left_x2 = int(left_x2);
-
-
+	float right = (right_x1 - right_x2) / (y1 - y2);
+	float left = (left_x1 - left_x2) / (y1 - y2);
+	float slope = ((right_x1+left_x1)/2 - (right_x2+left_x2)/2) / (y1 - y2);
+	
     //Draw the right and left lines on image
     if (draw_right)
     line(img_line, Point(right_x1, y1), Point(right_x2, y2), Scalar(255, 0, 0), 10);
@@ -183,7 +184,20 @@ float draw_line(Mat &img_line, vector<Vec4i> lines, int width, int height)
     line(img_line, Point((right_x1 + left_x1) / 2, y1), 
     Point((right_x2 + left_x2) / 2, y2), Scalar(255, 0, 0), 10);
     
-    float slope = ((right_x1+left_x1)/2 - (right_x2+left_x2)/2) / (y1 - y2);
+    if(right = 1)
+    {
+		slope = 1;
+	}
+	else if(left = 1)
+	{
+		slope = -1;
+	}
+	else
+	{
+		slope = 0;
+	}
+	
+    //printf("%f\n", slope);
     
     return slope;
  }

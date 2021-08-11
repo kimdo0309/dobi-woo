@@ -47,17 +47,18 @@ int main()
 		vector<Vec4i> linesP;
 		HoughLinesP(Result, linesP, 2, CV_PI/180, 15, 50, 100);
 		float slope = draw_line(lines, linesP, width, height);
-		printf("%f\n", slope);
+		
 		delay(100);
-		/*if(slope < 2 && slope > -2)
+		
+		if(slope = 0)
 		{
 			motor_straight(speed);
 		}
-		else if(slope < -2)
+		else if(slope = -1)
 		{
 			motor_left(speed);
 		}
-		else if(slope > 2)
+		else if(slope  = 1)
 		{
 			motor_right(speed);
 		}
@@ -65,7 +66,7 @@ int main()
 		{
 			motor_init();
 		}
-		*/
+		
 		imshow("cam1", lines);
 		imshow("cam2", Result);
 		if(waitKey(1) == 27) //esc입력시 종료
