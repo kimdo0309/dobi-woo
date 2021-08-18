@@ -145,6 +145,7 @@ sdp_session_t* register_service(uint8_t rfcomm_channel) {
 char input[1024] = { 0 };
 char* read_server(int client) {
 	// read data from the client
+	memset(input, 0, sizeof(input));
 	int bytes_read;
 	bytes_read = read(client, input, sizeof(input));
 	if (bytes_read > 0) {
@@ -199,23 +200,24 @@ int main()
 		fprintf(stderr, "accepted connection from %s\n", buffer);
 		memset(buffer, 0, sizeof(buffer));
 		pthread_create(&thread_id, NULL, ThreadMain, (void*)client);
+		
 	}
 }
 void* ThreadMain(void* argument)
 {
-	char buf[1024];
 	pthread_detach(pthread_self());
 	int client = (int)argument;
 	while (1)
 	{
-		char *recv_message = read_server(client);
+		char *recv_message =  read_server(client);
 		if ( recv_message == NULL ){
 		printf("client disconnected\n");
 		break;
 		}
-		printf("%s\n", recv_message);
-		write_server(client, recv_message);
+		printf("recv_message : %s\n", recv_message);
+		//write_server(client, recv_message);
 	}
+	
 	printf("disconnected\n");
 	close(client);
 	return 0;
