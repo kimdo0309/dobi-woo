@@ -5,8 +5,8 @@ LIBS = $(OPENCV)
 
 .PHONY: all clean
     
-main : main.cpp drawline.o color.o point.o motor.o
-	$(CC) -o main main.cpp drawline.o color.o point.o motor.o $(LIBS) -lgsl -lcblas -lwiringPi
+main : main.cpp drawline.o color.o point.o motor.o bluetooth.o
+	$(CC) -o main main.cpp drawline.o color.o point.o motor.o bluetooth.o $(LIBS) -lgsl -lcblas -lwiringPi -lbluetooth -lpthread
 	./main
 
 drawline.o : drawline.cpp drawline.h
@@ -20,6 +20,9 @@ point.o : point.cpp point.h
 	
 motor.o : motor.cpp motor.h
 	$(CC) -c -o motor.o motor.cpp -lwiringPi
+	
+bluetooth.o : bluetooth.cpp bluetooth.h
+	$(CC) -c -o bluetooth.o bluetooth.cpp 
 
 clean:
 	rm -f main
