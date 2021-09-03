@@ -11,12 +11,14 @@
 #include <sys/wait.h>
 #include <pthread.h>
 #include <signal.h>
+#include "motor.h"
 
 using namespace std;
 
 void* ThreadMain(void* argument);
 bdaddr_t bdaddr_any = { 0, 0, 0, 0, 0, 0 };
 bdaddr_t bdaddr_local = { 0, 0, 0, 0xff, 0xff, 0xff };
+int speed = 100;
 
 int _str2uuid(const char* uuid_str, uuid_t* uuid) {
 	uint32_t uuid_int[4];
@@ -173,6 +175,9 @@ void* ThreadMain(void* argument)
 {
 	pthread_detach(pthread_self());
 	int client = (int)argument;
+	
+	if(wiringPiSetup() == -1) return 0;
+	motor_value();
 	while (1)
 	{
 		char *recv_message =  read_server(client);
@@ -182,9 +187,36 @@ void* ThreadMain(void* argument)
 		}
 		printf("recv_message : %s\n", recv_message);
 		//write_server(client, recv_message);
+		//delay(100);
+		float mess = atof(recv_message);
+		printf("mess : %f\n", mess);
+		if(mess <= 112.5 && mess >= 67.5)
+		{
+			motor_straight(speed);
+		}
+		else if((mess >=157.5 && mess <= 180) || (mess <= -157.5 && mess >= -180))
+		{
+			motor_left(speed);
+		}
+		else if(mess <=22.5 && mess >= -22.5)
+		{
+			motor_right(speed);
+		}
+		else if(mess >= -112.5 && mess <= -67.5)
+		{
+			motor_back(speed);
+		}
+		else if(mess == 3000)
+		{
+			motor_init();
+		}
+		
+		signal(SIGINT, INThandler);	// ctrl + z 종료
 	}
 	
 	printf("disconnected\n");
 	close(client);
 	return 0;
 }
+
+

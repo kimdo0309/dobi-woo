@@ -9,7 +9,6 @@
 using namespace cv;
 using namespace std;
 
-int speed = 90;
 bdaddr_t bdaddr_anyy = { 0, 0, 0, 0, 0, 0 };
 
 int main()
@@ -21,13 +20,10 @@ int main()
 	cout << "첫번째 카메라를 열 수 없습니다." << endl;
 	if(wiringPiSetup() == -1) return 1;
 	
-	//signal(SIGINT, INThandler);	// ctrl + z 종료
-	
 	//double fps = cap.get(CAP_PROP_FPS);
 	int width = cap.get(CAP_PROP_FRAME_WIDTH);
 	int height = cap.get(CAP_PROP_FRAME_HEIGHT);
 	
-	motor_value();
 	//namedWindow("cam", 1);
 	//Color_createTrackbar();
 	
@@ -82,32 +78,11 @@ int main()
 		vector<Vec4i> linesP;
 		HoughLinesP(Result, linesP, 2, CV_PI/180, 15, 50, 100);
 		float slope = draw_line(lines, linesP, width, height);
-		
-		delay(100);
-		
-		
-		if(slope = 0)
-		{
-			motor_straight(speed);
-		}
-		else if(slope = -1)
-		{
-			motor_left(speed);
-		}
-		else if(slope  = 1)
-		{
-			motor_right(speed);
-		}
-		else
-		{
-			motor_init();
-		}
-		
+
 		imshow("cam1", lines);
 		imshow("cam2", Result);
 		if(waitKey(1) == 27) //esc입력시 종료
 		{
-			motor_init();
 			break;   
 		}
 	}

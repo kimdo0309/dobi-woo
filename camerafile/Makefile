@@ -21,7 +21,7 @@ point.o : point.cpp point.h
 motor.o : motor.cpp motor.h
 	$(CC) -c -o motor.o motor.cpp -lwiringPi
 	
-bluetooth.o : bluetooth.cpp bluetooth.h
+bluetooth.o : bluetooth.cpp bluetooth.h motor.h
 	$(CC) -c -o bluetooth.o bluetooth.cpp 
 
 clean:
