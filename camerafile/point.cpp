@@ -26,7 +26,7 @@ Mat Point_img(Mat can, int width, int height)
 		  
 	fillPoly(black_img, ppt, npt, 1, Scalar(255, 255, 255), LINE_8);
 	bitwise_and(can, black_img, Result);
-	imshow("cam3", black_img);
+	//imshow("cam3", black_img);
 	
 	return Result;
 }

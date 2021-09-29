@@ -80,7 +80,7 @@ int main()
 		float slope = draw_line(lines, linesP, width, height);
 
 		imshow("cam1", lines);
-		imshow("cam2", Result);
+		//imshow("cam2", Result);
 		if(waitKey(1) == 27) //esc입력시 종료
 		{
 			break;   
