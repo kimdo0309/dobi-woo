@@ -154,9 +154,8 @@ float draw_line(Mat &img_line, vector<Vec4i> lines, int width, int height)
 
     //Find 2 end points for right and left lines, used for drawing the line
     //y = m*x + b--> x = (y - b) / m
-    int y1 = height;
-    //int y2 = height * (1 - 0.4);
-    int y2 = height * (1 - 0.7);
+    float y1 = height;
+    float y2 = height * 0.55;
 
     float right_x1 = (y1 - right_b) / right_m;
     float right_x2 = (y2 - right_b) / right_m;
@@ -165,12 +164,6 @@ float draw_line(Mat &img_line, vector<Vec4i> lines, int width, int height)
     float left_x2 = (y2 - left_b) / left_m;
 
     //Convert calculated end points from float to int
-    y1 = int(y1);
-    y2 = int(y2);
-    right_x1 = int(right_x1);
-    right_x2 = int(right_x2);
-    left_x1 = int(left_x1);
-    left_x2 = int(left_x2);
 	float right = (right_x1 - right_x2) / (y1 - y2);
 	float left = (left_x1 - left_x2) / (y1 - y2);
 	float slope = ((right_x1+left_x1)/2 - (right_x2+left_x2)/2) / (y1 - y2);
@@ -197,7 +190,12 @@ float draw_line(Mat &img_line, vector<Vec4i> lines, int width, int height)
 		slope = 0;
 	}
 	
-    //printf("%f\n", slope);
+	printf("\n");
+    printf("right_x1 : %f, %f\n", right_x1, y1);
+    printf("right_x2 : %d, %f\n", right_x2, y2);
+    printf("left_x1 : %f, %f\n", left_x1, y1);
+    printf("left_x2 : %f, %f\n", left_x2, y2);
+    printf("\n");
     
     return slope;
  }

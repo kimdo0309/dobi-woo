@@ -16,10 +16,10 @@ Mat Point_img(Mat can, int width, int height)
 	points[2] = Point(width - (width * (1 - 0.5)) / 2, height - height * 0.4);
 	points[3] = Point(width - (width * (1 - 0.85)) / 2, height);
 	*/
-	points[0] = Point(0, height - height * 0.2);
-	points[1] = Point((width * (1 - 0.5)) / 2, height - height * 0.65);
-	points[2] = Point(width - (width * (1 - 0.5)) / 2, height - height * 0.65);
-	points[3] = Point(width, height - height * 0.2);
+	points[0] = Point(0, height);
+	points[1] = Point((width * (1 - 0.5)) / 2, height - height * 0.55);
+	points[2] = Point(width - (width * (1 - 0.5)) / 2, height - height * 0.55);
+	points[3] = Point(width, height);
 	
 	const Point*ppt[1] = { points };
 	int npt[] = { 4 };
