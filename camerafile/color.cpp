@@ -10,6 +10,8 @@ Mat black_inRange, black_mask, color_inRange, color_mask;
 Mat can, hsv, gray, gauss, inblack_inRange;
 int H_lowTh, S_lowTh, V_lowTh, H_highTh, S_highTh, V_highTh;
 
+int lowTh,Kernel_size=3, Max_lowTh=100, ratioo=3;
+
 static void Color_Scalar(Mat frame2, int, int, int, int, int, int, void*)
 {
 	color_inRange = Mat::zeros(0, 0, CV_8UC3);
@@ -33,6 +35,7 @@ void Color_createTrackbar()
 
 Mat color(Mat frame2, int width, int height)
 {
+    createTrackbar("Min Threshold:","can",&lowTh,Max_lowTh);
     /*
     inRange(frame2, Scalar(200, 255, 255), Scalar(255, 255, 255), white_mask);
     bitwise_and(frame2, frame2, white_inRange, white_mask);
@@ -55,9 +58,9 @@ Mat color(Mat frame2, int width, int height)
     //addWeighted(white_inRange, 1.0, yellow_inRange, 1.0, 0.0, Add);
     //cvtColor(Add, gray, COLOR_BGR2GRAY);
     GaussianBlur(gray, gauss, Size(3, 3), 0, 0);
-    Canny(gauss, can, 100, 125);
+    Canny(gauss, can, lowTh, (lowTh*ratioo));
     
-    //imshow("cam", color_inRange);
+    imshow("can", can);
 
     return can;
 }

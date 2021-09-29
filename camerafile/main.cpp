@@ -51,14 +51,14 @@ int main()
 	//sdpRegisterL2cap(port);
 	
 	// accept one connection
-	printf("calling accept()\n");
+	/*printf("calling accept()\n");
 	client = accept(sock, (struct sockaddr*)&rem_addr, &opt);
 	printf("accept() returned %d\n", client);
 	ba2str(&rem_addr.rc_bdaddr, buffer);
 	fprintf(stderr, "accepted connection from %s\n", buffer);
 	memset(buffer, 0, sizeof(buffer));
 	pthread_create(&thread_id, NULL, ThreadMain, (void*)client);
-
+*/
 	while(1)
 	{
 		Mat frame, black_img, can, lines, colorselect;
