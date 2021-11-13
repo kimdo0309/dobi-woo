@@ -128,21 +128,37 @@ void motor_joyskick(float mess)
 	
 	while(1)
 	{
-		if(mess <= 112.5 && mess >= 67.5)
+		if(mess < 112.5 && mess >= 67.5)
 		{
 			motor_straight(speed);
 		}
-		else if((mess >=157.5 && mess <= 180) || (mess <= -157.5 && mess >= -180))
+		else if(mess < 157.5 && mess >= 112.5)
+		{
+			//motor_straight_left(speed);
+		}
+		else if((mess >=157.5 && mess <= 180) || (mess < -157.5 && mess >= -180))
 		{
 			motor_left(speed);
 		}
-		else if(mess <=22.5 && mess >= -22.5)
+		else if(mess < -112.5 && mess >= -157.5)
+		{
+			//motor_back_left(speed);
+		}
+		else if(mess < -67.5 && mess >= -112.5)
+		{
+			motor_back(speed);
+		}
+		else if(mess < -22.5 && mess >= 67.5)
+		{
+			//motor_back_right(speed);
+		}
+		else if(mess <22.5 && mess >= -22.5)
 		{
 			motor_right(speed);
 		}
-		else if(mess >= -112.5 && mess <= -67.5)
+		else if(mess < 67.5 && mess >= 22.5)
 		{
-			motor_back(speed);
+			//motor_straight_right(speed);
 		}
 		else if(mess == 3000)
 		{
