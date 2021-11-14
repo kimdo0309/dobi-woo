@@ -121,6 +121,34 @@ void motor_left(int speed)
 	digitalWrite(MOTOR2D, 0);
 	softPwmWrite(END, speed);
 }
+void motor_straight_left(int speed)
+{
+	motor_left(speed);
+	delay(600);
+	motor_straight(speed);
+	delay(400);
+}
+void motor_back_left(int speed)
+{
+	motor_left(speed);
+	delay(600);
+	motor_back(speed);
+	delay(400);
+}
+void motor_back_right(int speed)
+{
+	motor_right(speed);
+	delay(600);
+	motor_back(speed);
+	delay(400);
+}
+void motor_straight_right(int speed)
+{
+	motor_right(speed);
+	delay(600);
+	motor_straight(speed);
+	delay(400);
+}
 
 void motor_joyskick(float mess)
 {
@@ -128,13 +156,14 @@ void motor_joyskick(float mess)
 	
 	while(1)
 	{
+		/*
 		if(mess < 112.5 && mess >= 67.5)
 		{
 			motor_straight(speed);
 		}
 		else if(mess < 157.5 && mess >= 112.5)
 		{
-			//motor_straight_left(speed);
+			motor_straight_left(speed);
 		}
 		else if((mess >=157.5 && mess <= 180) || (mess < -157.5 && mess >= -180))
 		{
@@ -142,7 +171,7 @@ void motor_joyskick(float mess)
 		}
 		else if(mess < -112.5 && mess >= -157.5)
 		{
-			//motor_back_left(speed);
+			motor_back_left(speed);
 		}
 		else if(mess < -67.5 && mess >= -112.5)
 		{
@@ -150,7 +179,7 @@ void motor_joyskick(float mess)
 		}
 		else if(mess < -22.5 && mess >= 67.5)
 		{
-			//motor_back_right(speed);
+			motor_back_right(speed);
 		}
 		else if(mess <22.5 && mess >= -22.5)
 		{
@@ -158,7 +187,32 @@ void motor_joyskick(float mess)
 		}
 		else if(mess < 67.5 && mess >= 22.5)
 		{
-			//motor_straight_right(speed);
+			motor_straight_right(speed);
+		}
+		else if(mess == 3000)
+		{
+			motor_init();
+		}
+		else if(mess == 1000)
+		{
+			break;
+		}
+		*/
+		if(mess < 135 && mess >= 45)
+		{
+			motor_straight(speed);
+		}
+		else if((mess >=135 && mess <= 180) || (mess < -135 && mess >= -180))
+		{
+			motor_left(speed);
+		}
+		else if(mess < -45 && mess >= -135)
+		{
+			motor_back(speed);
+		}
+		else if(mess < 45 && mess >= -45)
+		{
+			motor_right(speed);
 		}
 		else if(mess == 3000)
 		{

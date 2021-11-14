@@ -78,7 +78,19 @@ int main()
 		frame2.copyTo(lines);
 		vector<Vec4i> linesP;
 		HoughLinesP(Result, linesP, 2, CV_PI/180, 15, 50, 100);
-		float slope = draw_line(lines, linesP, width, height);
+		float slope
+		int num;
+		if(mess == 1000) num = mess;
+		else if(mess == 2000) num = mess;
+		
+		if(num == 1000)
+		{
+			slope = draw_line(lines, linesP, width, height);
+		}
+		else if(num == 2000)
+		{
+			motor_joyskick(mess);
+		}
 		
 		printf("main mess : %f\n", mess);
 
