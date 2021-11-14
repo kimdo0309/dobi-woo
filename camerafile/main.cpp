@@ -82,7 +82,7 @@ int main()
 		
 		if(mess == 1000) num = mess;
 		else if(mess == 2000) num = mess;
-		
+		/*
 		if(num == 1000)
 		{
 			slope = draw_line(lines, linesP, width, height);
@@ -91,7 +91,7 @@ int main()
 		{
 			motor_joyskick(mess);
 		}
-		
+		*/
 		printf("main mess : %f\n", mess); 
 
 		imshow("cam1", lines);

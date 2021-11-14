@@ -152,10 +152,8 @@ void motor_straight_right(int speed)
 
 void motor_joyskick(float mess)
 {
-	int speed;
+	int speed = 200;
 	
-	while(1)
-	{
 		/*
 		if(mess < 112.5 && mess >= 67.5)
 		{
@@ -218,9 +216,4 @@ void motor_joyskick(float mess)
 		{
 			motor_init();
 		}
-		else if(mess == 1000)
-		{
-			break;
-		}
-	}
 }
