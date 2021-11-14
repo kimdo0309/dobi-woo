@@ -92,7 +92,7 @@ int main()
 			motor_joyskick(mess);
 		}
 		
-		printf("main mess : %f\n", mess);
+		printf("main mess : %f\n", mess); 
 
 		imshow("cam1", lines);
 		//imshow("cam2", Result);
