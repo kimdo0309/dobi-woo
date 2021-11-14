@@ -9,7 +9,7 @@ main : main.cpp drawline.o color.o point.o motor.o bluetooth.o
 	$(CC) -o main main.cpp drawline.o color.o point.o motor.o bluetooth.o $(LIBS) -lgsl -lcblas -lwiringPi -lbluetooth -lpthread
 	./main
 
-drawline.o : drawline.cpp drawline.h
+drawline.o : drawline.cpp drawline.h motor.h
 	$(CC) -c -o drawline.o drawline.cpp $(LIBS)
 	
 color.o : color.cpp color.h

@@ -1,6 +1,7 @@
 #include <opencv2/opencv.hpp>
 #include <iostream>
 #include <gsl/gsl_fit.h>
+#include <motor.h>
 
 using namespace cv;
 using namespace std;
@@ -167,6 +168,12 @@ float draw_line(Mat &img_line, vector<Vec4i> lines, int width, int height)
 	float right = (right_x1 - right_x2) / (y1 - y2);
 	float left = (left_x1 - left_x2) / (y1 - y2);
 	float slope = ((right_x1+left_x1)/2 - (right_x2+left_x2)/2) / (y1 - y2);
+    
+    printf("--------------------------------------------\n\n\n\n\n");
+    printf("right: %f\n",right);
+    printf("left: %f\n",left);
+    printf("--------------------------------------------\n\n\n\n\n");
+    
 	
     //Draw the right and left lines on image
     if (draw_right)
@@ -176,19 +183,6 @@ float draw_line(Mat &img_line, vector<Vec4i> lines, int width, int height)
     if (draw_center)
     line(img_line, Point((right_x1 + left_x1) / 2, y1), 
     Point((right_x2 + left_x2) / 2, y2), Scalar(255, 0, 0), 10);
-    
-    if(right = 1)
-    {
-		slope = 1;
-	}
-	else if(left = 1)
-	{
-		slope = -1;
-	}
-	else
-	{
-		slope = 0;
-	}
 	
 	printf("\n");
     printf("right_x1 : %f, %f\n", right_x1, y1);
