@@ -60,6 +60,7 @@ int main()
 	pthread_create(&thread_id, NULL, ThreadMain, (void*)client);
 	extern float mess;
 
+	float num=2000;
 	while(1)
 	{
 		Mat frame, black_img, can, lines, colorselect;
@@ -78,8 +79,8 @@ int main()
 		frame2.copyTo(lines);
 		vector<Vec4i> linesP;
 		HoughLinesP(Result, linesP, 2, CV_PI/180, 15, 50, 100);
-		float slope
-		int num;
+		float slope;
+		
 		if(mess == 1000) num = mess;
 		else if(mess == 2000) num = mess;
 		

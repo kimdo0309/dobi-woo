@@ -184,6 +184,12 @@ float draw_line(Mat &img_line, vector<Vec4i> lines, int width, int height)
     line(img_line, Point((right_x1 + left_x1) / 2, y1), 
     Point((right_x2 + left_x2) / 2, y2), Scalar(255, 0, 0), 10);
 	
+    if((left<=-1.6)&&(left>=-2){
+        motor_straight_left(200);
+    }
+    if((slope>=-0.2)&&(slope<=0.2){
+        motor_straight(200);
+    }
 	printf("\n");
     printf("right_x1 : %f, %f\n", right_x1, y1);
     printf("right_x2 : %d, %f\n", right_x2, y2);
