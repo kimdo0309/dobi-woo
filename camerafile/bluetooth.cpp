@@ -191,7 +191,7 @@ void* ThreadMain(void* argument)
 		//delay(100);
 		mess = atof(recv_message);
 		printf("mess : %f\n", mess);
-
+		
 		signal(SIGINT, INThandler);	// ctrl + z 종료
 	}
 	printf("disconnected\n");

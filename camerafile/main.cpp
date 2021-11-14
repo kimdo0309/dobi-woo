@@ -61,6 +61,7 @@ int main()
 	extern float mess;
 	float slope;
 	float num = 2000;
+	
 	while(1)
 	{
 		Mat frame, black_img, can, lines, colorselect;
@@ -82,17 +83,17 @@ int main()
 		
 		if(mess == 1000) num = mess;
 		else if(mess == 2000) num = mess;
-		/*
+		
 		if(num == 1000)
 		{
 			slope = draw_line(lines, linesP, width, height);
-		}
+		}/*
 		else if(num == 2000)
 		{
 			motor_joyskick(mess);
 		}
 		*/
-		printf("main mess : %f\n", mess); 
+		//printf("main mess : %f\n", mess); 
 
 		imshow("cam1", lines);
 		//imshow("cam2", Result);
