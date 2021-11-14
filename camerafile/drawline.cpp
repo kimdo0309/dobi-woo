@@ -1,7 +1,7 @@
 #include <opencv2/opencv.hpp>
 #include <iostream>
 #include <gsl/gsl_fit.h>
-#include <motor.h>
+#include "motor.h"
 
 using namespace cv;
 using namespace std;
