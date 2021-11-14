@@ -168,6 +168,12 @@ float draw_line(Mat &img_line, vector<Vec4i> lines, int width, int height)
 	float right = (right_x1 - right_x2) / (y1 - y2);
 	float left = (left_x1 - left_x2) / (y1 - y2);
 	float slope = ((right_x1+left_x1)/2 - (right_x2+left_x2)/2) / (y1 - y2);
+    
+    printf("--------------------------------------------\n\n\n\n\n");
+    printf("right: %f\n",right);
+    printf("left: %f\n",left);
+    printf("--------------------------------------------\n\n\n\n\n");
+    
 	
     //Draw the right and left lines on image
     if (draw_right)
