@@ -19,7 +19,7 @@ void* ThreadMain(void* argument);
 
 bdaddr_t bdaddr_any = { 0, 0, 0, 0, 0, 0 };
 bdaddr_t bdaddr_local = { 0, 0, 0, 0xff, 0xff, 0xff };
-float mess;
+float mess = 3000;
 
 int _str2uuid(const char* uuid_str, uuid_t* uuid) {
 	uint32_t uuid_int[4];

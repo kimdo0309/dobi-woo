@@ -16,7 +16,7 @@ float draw_line(Mat &img_line, vector<Vec4i> lines, int width, int height)
 
     //Find slopes of all lines
     //But only care about lines where abs(slope) > slope_threshold  
-    float slope_threshold = 0.5;
+    float slope_threshold = 0.2;
     vector<float> slopes;
     vector<Vec4i> new_lines;
 
@@ -32,7 +32,7 @@ float draw_line(Mat &img_line, vector<Vec4i> lines, int width, int height)
     float slope;
     //Calculate slope
     if (x2 - x1 == 0) //corner case, avoiding division by 0
-    slope = 999.0; //practically infinite slope
+    slope = 499.0; //practically infinite slope
     else
     slope = (y2 - y1) / (float)(x2 - x1);
 
@@ -165,13 +165,14 @@ float draw_line(Mat &img_line, vector<Vec4i> lines, int width, int height)
     float left_x2 = (y2 - left_b) / left_m;
 
     //Convert calculated end points from float to int
-	float right = (right_x1 - right_x2) / (y1 - y2);
-	float left = (left_x1 - left_x2) / (y1 - y2);
+    float right = (right_x1 - right_x2) / (y1 - y2);
+    float left = (left_x1 - left_x2) / (y1 - y2);
 	float slope = ((right_x1+left_x1)/2 - (right_x2+left_x2)/2) / (y1 - y2);
     
     printf("--------------------------------------------\n\n\n\n\n");
     printf("right: %f\n",right);
     printf("left: %f\n",left);
+    printf("slope: %f\n",slope);
     printf("--------------------------------------------\n\n\n\n\n");
     
 	
@@ -184,12 +185,7 @@ float draw_line(Mat &img_line, vector<Vec4i> lines, int width, int height)
     line(img_line, Point((right_x1 + left_x1) / 2, y1), 
     Point((right_x2 + left_x2) / 2, y2), Scalar(255, 0, 0), 10);
 	
-	printf("\n");
-    printf("right_x1 : %f, %f\n", right_x1, y1);
-    printf("right_x2 : %d, %f\n", right_x2, y2);
-    printf("left_x1 : %f, %f\n", left_x1, y1);
-    printf("left_x2 : %f, %f\n", left_x2, y2);
-    printf("\n");
-    
+    motor_auto(left, right, slope);
+
     return slope;
  }

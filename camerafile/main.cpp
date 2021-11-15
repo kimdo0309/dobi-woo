@@ -14,7 +14,7 @@ bdaddr_t bdaddr_anyy = { 0, 0, 0, 0, 0, 0 };
 int main()
 {
 	VideoCapture cap(-1);
-	//VideoCapture cap("unknown.png");
+	//VideoCapture cap("1.png");
 	
 	if(!cap.isOpened())
 	cout << "첫번째 카메라를 열 수 없습니다." << endl;
@@ -23,9 +23,6 @@ int main()
 	//double fps = cap.get(CAP_PROP_FPS);
 	int width = cap.get(CAP_PROP_FRAME_WIDTH);
 	int height = cap.get(CAP_PROP_FRAME_HEIGHT);
-	
-	//namedWindow("cam", 1);
-	//Color_createTrackbar();
 	
 	pthread_t thread_id;
 	signal(SIGPIPE, SIG_IGN);
@@ -58,10 +55,11 @@ int main()
 	fprintf(stderr, "accepted connection from %s\n", buffer);
 	memset(buffer, 0, sizeof(buffer));
 	pthread_create(&thread_id, NULL, ThreadMain, (void*)client);
-	extern float mess;
-	float slope;
-	float num = 2000;
 	
+	extern float mess;
+	
+	float num = 2000;
+
 	while(1)
 	{
 		Mat frame, black_img, can, lines, colorselect;
@@ -86,17 +84,15 @@ int main()
 		
 		if(num == 1000)
 		{
-			slope = draw_line(lines, linesP, width, height);
-		}/*
+			draw_line(lines, linesP, width, height);
+		}
 		else if(num == 2000)
 		{
 			motor_joyskick(mess);
 		}
-		*/
-		//printf("main mess : %f\n", mess); 
-
-		imshow("cam1", lines);
-		//imshow("cam2", Result);
+		
+		//printf("main mess : %f\n", mess);
+		imshow("cam2", lines);
 		if(waitKey(1) == 27) //esc입력시 종료
 		{
 			break;   

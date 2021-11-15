@@ -50,9 +50,9 @@ int main()
 	   GaussianBlur(gray, gauss, Size(3, 3), 0, 0);;
 	   Canny(gauss, can, 100, 255);
 	   
-	   imshow("cam", black_inRange); 
-	   imshow("cam1", frame2);
-	   imshow("cam2", can);
+	   //imshow("cam", black_inRange); 
+	   //imshow("cam1", frame2);
+	   //imshow("cam2", can);
 	   
 	   if(waitKey(1) == 27) break;   //esc입력시 종료
    }

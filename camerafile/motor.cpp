@@ -123,14 +123,14 @@ void motor_left(int speed)
 }
 void motor_straight_left(int speed)
 {
-	motor_left(speed);
+	motor_left(speed*2);
 	delay(600);
 	motor_straight(speed);
 	delay(400);
 }
 void motor_back_left(int speed)
 {
-	motor_left(speed);
+	motor_left(speed*2);
 	delay(600);
 	motor_back(speed);
 	delay(400);
@@ -138,21 +138,40 @@ void motor_back_left(int speed)
 void motor_back_right(int speed)
 {
 	motor_right(speed);
-	delay(600);
+	delay(700);
 	motor_back(speed);
-	delay(400);
+	delay(300);
 }
+#define DELAY_MS1  760
+#define DELAY_MS2  100
+unsigned long long lastMs = 0;
 void motor_straight_right(int speed)
 {
-	motor_right(speed);
-	delay(600);
+	motor_right(speed*5/3);
+	/*while(1)
+	{
+		if(millis() - lastMs >= DELAY_MS1)
+		{
+			lastMs = millis();
+			break;
+		}
+		printf("OK!!!!!!!!!!!!!!!!!!!!");
+	}
 	motor_straight(speed);
-	delay(400);
+	while(1)
+	{
+		if(millis() - lastMs >= DELAY_MS2)
+		{
+			lastMs = millis();
+			break;
+		}
+	}*/
+	
 }
 
 void motor_joyskick(float mess)
 {
-	int speed = 200;
+	int speed = 100;
 	
 		/*
 		if(mess < 112.5 && mess >= 67.5)
@@ -216,4 +235,37 @@ void motor_joyskick(float mess)
 		{
 			motor_init();
 		}
+}
+
+#define DELAY_MS1  760
+#define DELAY_MS2  100
+
+//unsigned long long lastMs = 0;
+
+void motor_auto(float left, float right, float slope)
+{
+	int speed = 100;
+	if((left<=-1.2))
+	{
+		motor_right(speed*5/3);
+		delay(10);
+		motor_straight(speed);
+		delay(10);
+
+	}
+	else if((slope>=-0.5)&&(slope<=0.5))
+	{
+		motor_straight(50);
+	}
+	else if(right >= 1.2)
+	{
+		motor_left(speed*5/3);
+		delay(10);
+		motor_straight(speed);
+		delay(10);
+	}
+	else
+	{
+		motor_init();
+	}
 }
