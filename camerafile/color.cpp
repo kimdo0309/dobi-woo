@@ -10,7 +10,7 @@ Mat black_inRange, black_mask, color_inRange, color_mask;
 Mat can, hsv, gray, gauss, inblack_inRange;
 int H_lowTh, S_lowTh, V_lowTh, H_highTh, S_highTh, V_highTh;
 int Kernel_size=3, Max_lowTh=200, ratioo=3;
-int lowTh = 145;
+int lowTh = 110;
 
 static void Color_Scalar(Mat frame2, int, int, int, int, int, int, void*)
 {

@@ -16,7 +16,7 @@ float draw_line(Mat &img_line, vector<Vec4i> lines, int width, int height)
 
     //Find slopes of all lines
     //But only care about lines where abs(slope) > slope_threshold  
-    float slope_threshold = 0.2;
+    float slope_threshold = 0.35;
     vector<float> slopes;
     vector<Vec4i> new_lines;
 
@@ -156,7 +156,7 @@ float draw_line(Mat &img_line, vector<Vec4i> lines, int width, int height)
     //Find 2 end points for right and left lines, used for drawing the line
     //y = m*x + b--> x = (y - b) / m
     float y1 = height;
-    float y2 = height * 0.55;
+    float y2 = height * 0.45;
 
     float right_x1 = (y1 - right_b) / right_m;
     float right_x2 = (y2 - right_b) / right_m;

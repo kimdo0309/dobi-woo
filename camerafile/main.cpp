@@ -78,6 +78,7 @@ int main()
 		frame2.copyTo(lines);
 		vector<Vec4i> linesP;
 		HoughLinesP(Result, linesP, 2, CV_PI/180, 15, 50, 100);
+		//draw_line(lines, linesP, width, height);
 		
 		if(mess == 1000) num = mess;
 		else if(mess == 2000) num = mess;

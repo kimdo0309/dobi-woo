@@ -237,35 +237,36 @@ void motor_joyskick(float mess)
 		}
 }
 
-#define DELAY_MS1  760
-#define DELAY_MS2  100
-
-//unsigned long long lastMs = 0;
+#define DELAY  760
 
 void motor_auto(float left, float right, float slope)
 {
-	int speed = 100;
-	if((left<=-1.2))
-	{
-		motor_right(speed*5/3);
-		delay(10);
-		motor_straight(speed);
-		delay(10);
+	int speed = 60;
 
-	}
-	else if((slope>=-0.5)&&(slope<=0.5))
+	if((left <= -0.7) && (left >= -2.5))
 	{
-		motor_straight(50);
-	}
-	else if(right >= 1.2)
-	{
-		motor_left(speed*5/3);
+		motor_right(150);
 		delay(10);
+		motor_straight(speed/3);
+		delay(10);
+	}
+	else if((slope>=-0.1) && (slope <=0.5))
+	{
+
 		motor_straight(speed);
+		delay(100);
+	}
+	else if((right >= 0.7) && (right <= 2.5))
+	{
+		motor_left(speed);
 		delay(10);
+	}
+	else if((right == 1) && (left == 1) && (slope == 1))
+	{
+		motor_back(speed);
 	}
 	else
 	{
-		motor_init();
+		//motor_init();
 	}
 }
