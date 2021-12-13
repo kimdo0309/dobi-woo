@@ -6,9 +6,9 @@
 using namespace cv;
 using namespace std;
 
-float draw_line(Mat &img_line, vector<Vec4i> lines, int width, int height)
+void draw_line(Mat &img_line, vector<Vec4i> lines, int width, int height)
 {
-    if (lines.size() == 0) return 1;
+    //if (lines.size() == 0) return 0;
 
     bool draw_right = true;
     bool draw_left = true;
@@ -186,6 +186,4 @@ float draw_line(Mat &img_line, vector<Vec4i> lines, int width, int height)
     Point((right_x2 + left_x2) / 2, y2), Scalar(255, 0, 0), 10);
 	
     motor_auto(left, right, slope);
-
-    return slope;
  }

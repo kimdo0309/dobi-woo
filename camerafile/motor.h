@@ -16,11 +16,9 @@ void motor_straight(int speed);
 void motor_back(int speed);
 void motor_right(int speed);
 void motor_left(int speed);
-void motor_straight_left(int speed);
-void motor_back_left(int speed);
-void motor_back_right(int speed);
-void motor_straight_right(int speed);
 void motor_joyskick(float mess);
 void motor_auto(float left, float right, float slope);
+void motor_S_left(int speed);
+void motor_S_right(int speed);
 
 #endif

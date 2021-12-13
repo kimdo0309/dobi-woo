@@ -154,7 +154,7 @@ char* read_server(int client) {
 	int bytes_read;
 	bytes_read = read(client, input, sizeof(input));
 	if (bytes_read > 0) {
-		printf("received [%s]\n", input);
+		//printf("received [%s]\n", input);
 		return input;
 	}
 	else {
@@ -168,7 +168,7 @@ void write_server(int client, char* message) {
 	strcpy(messageArr, message);
 	bytes_sent = write(client, messageArr, strlen(messageArr));
 	if (bytes_sent > 0) {
-		printf("sent [%s] %d\n", messageArr, bytes_sent);
+		//printf("sent [%s] %d\n", messageArr, bytes_sent);
 	}
 }
 
@@ -183,14 +183,14 @@ void* ThreadMain(void* argument)
 	{
 		char *recv_message =  read_server(client);
 		if ( recv_message == NULL ){
-		printf("client disconnected\n");
+		//printf("client disconnected\n");
 		break;
 		}
-		printf("recv_message : %s\n", recv_message);
+		//printf("recv_message : %s\n", recv_message);
 		//write_server(client, recv_message);
 		//delay(100);
 		mess = atof(recv_message);
-		printf("mess : %f\n", mess);
+		//printf("mess : %f\n", mess);
 		
 		signal(SIGINT, INThandler);	// ctrl + z 종료
 	}

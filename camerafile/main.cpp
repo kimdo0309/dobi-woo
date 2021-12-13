@@ -59,7 +59,7 @@ int main()
 	extern float mess;
 	
 	float num = 2000;
-
+	
 	while(1)
 	{
 		Mat frame, black_img, can, lines, colorselect;
@@ -68,8 +68,8 @@ int main()
 		cap >> frame;
 		flip(frame, frame, -1); // 카메라 상하 반전
 		resize(frame, frame2, Size(width, height));
-		
-		can = color(frame2, width, height);
+
+		can = color(frame2);
 		
 		frame2.copyTo(colorselect);
 		
@@ -89,6 +89,7 @@ int main()
 		}
 		else if(num == 2000)
 		{
+			motor_init();
 			motor_joyskick(mess);
 		}
 		
